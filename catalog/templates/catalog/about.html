@@ -1,0 +1,52 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<br><br>
+
+
+<!-- Page Content -->
+<div class="container">
+
+	<!-- Portfolio Item Heading -->
+	<h1 class="my-4">About
+	  <small>Us</small>
+	</h1>
+
+	<!-- Portfolio Item Row -->
+	<div class="row">
+		{% for obj in objects %}
+	  <div class="col-md-8">
+		<img class="img-fluid" src="{{obj.image.url}}" alt="efg4tg">
+	  </div>
+
+	  <div class="col-md-4">
+		<h3 class="my-3">{{obj.title1}}</h3>
+		<p>{{obj.description1}}</p>
+		<h3 class="my-3">{{obj.title2}}</h3>
+		<p>{{obj.description2}}</p>
+	  </div>
+	  {% endfor %}
+	</div>
+	<!-- /.row -->
+
+	<!-- Related Projects Row -->
+	<h3 class="my-4">Related Projects</h3>
+
+	<div class="row">
+		{% for obj in abt %}
+	  <div class="col-md-3 col-sm-6 mb-4">
+		    <a href="#">
+			  <img class="img-fluid" src="{{obj.image.url}}" alt="efger">
+			</a>
+	  </div>
+	  {% endfor %}
+
+	</div>
+	<!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+  {% endblock %}

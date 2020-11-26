@@ -1,0 +1,48 @@
+
+	<nav class="navbar navbar-expand-lg navbar-dark black lighten-3 mt-0  mb-5" id="category">
+			<a class="navbar-brand" href="#">Categories:</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContents" aria-controls="navbarSupportedContents" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContents">
+			  <ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+				  <a class="nav-link" href="{% url 'search_results' %}?q=">All <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" href="{% url 'search_results' %}?q=Electronics">Electronics</a>
+				</li>
+				<li class="nav-item dropdown">
+				  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Food
+				  </a>
+				  <div class="dropdown-menu blue" aria-labelledby="navbarDropdown">
+				<a class="dropdown-item" href="{% url 'search_results' %}?q=Vegetables">Vegetables</a>
+				<a class="dropdown-item" href="{% url 'search_results' %}?q=Fruits">Fruits</a>
+				<a class="dropdown-item" href="{% url 'search_results' %}?q=Eggs">Eggs</a>
+				</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Cosmetics
+					</a>
+					<div class="dropdown-menu blue" aria-labelledby="navbarDropdown">
+				  <a class="dropdown-item" href="{% url 'search_results' %}?q=Perfumes">Perfumes/Sprays</a>
+				  <a class="dropdown-item" href="{% url 'search_results' %}?q=Earings">Earings</a>
+				  <a class="dropdown-item" href="{% url 'search_results' %}?q=Neckless">Neckless</a>
+				  <a class="dropdown-item" href="{% url 'search_results' %}?q=Beads">Beads</a>
+				  </div>
+				  </li>
+				<li class="nav-item">
+				  <a class="nav-link" href="{% url 'search_results' %}?q=Detergents" tabindex="-1" aria-disabled="true">Detergents</a>
+				</li>
+			  </ul>
+			  <form class="form-inline" action="{% url 'search_results' %}" method="get">
+				<div class="md-form my-0">
+				  <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+				</div>
+			  </form>
+			</div>
+		  </nav>
+	</main>

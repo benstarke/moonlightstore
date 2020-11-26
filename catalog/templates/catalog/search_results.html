@@ -1,0 +1,55 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br><br>
+<h1>Search Results </h1>
+    <section class="text-center mb-4">
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+        <!--Grid column-->{% for item in object_list %}
+        <div class="col-lg-3 col-md-6 mb-4">
+          <!--Card-->
+          <div class="card">
+            <!--Card image-->
+            <div class="view overlay">
+              <img src="{{ item.image.url }}" class="card-img-top"
+                alt="">
+              <a>
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+            <!--Card image-->
+            <!--Card content-->
+            <div class="card-body text-center">
+              <!--Category & Title-->
+              <a href="{% url 'product' item.slug %}" class="grey-text">
+                <h5>{{item.get_category_display}}</h5>
+              </a>
+              <h5>
+                <strong>
+                  <a href="{% url 'product' item.slug %}" class="dark-grey-text">{{item.title}}
+                    <span class="badge badge-pill danger-color">NEW</span>
+                  </a>
+                </strong>
+              </h5>
+              <h4 class="font-weight-bold blue-text">
+                {% if item.discount_price %}
+                <del>Ksh.{{item.price}}</del>
+                    <strong>Ksh.{{item.discount_price}}</strong>
+                {% else %}
+                <strong>Ksh.{{item.price}}</strong>
+                {% endif %}
+              </h4>
+            </div>
+            <!--Card content-->
+          </div>
+          <!--Card-->
+
+        </div>
+        {% endfor %}
+        <!--Grid column-->
+      </div>
+</section>
+
+{% endblock %}

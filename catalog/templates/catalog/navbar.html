@@ -1,0 +1,82 @@
+{% load static %}
+{% load cart_template_tags %}
+<!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark black scrolling-navbar">
+    <div class="container">
+      <a class="navbar-brand waves-effect" href="{% url 'home' %}" target="_blank">
+        <!--<img src="{% static 'logo.jpg' %}" width="110" height="60" alt="" loading="lazy">-->MoonLightStore
+        <img src="https://img.icons8.com/color/50/000000/opencart.png"/>
+      </a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link waves-effect white-text" href="{% url 'home' %}">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a href="{% url 'abouts' %}" class="nav-link waves-effect white-text">
+              About us
+            </a>
+          </li>
+        </ul>
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a href="{% url 'contact' %}" class="nav-link waves-effect white-text">
+              Contact us
+            </a>
+          </li>
+        </ul>
+        {% if user.is_authenticated %}
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a href="" class="nav-link waves-effect">
+              <span>Hello {{user.username}}</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a href="{% url 'order_summary' %}" class="nav-link waves-effect">
+              <span class="badge red z-depth-1 mr-1">{{ request.user|cart_item_count }}</span>
+              <i class="fas fa-shopping-cart"></i>
+              <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+            </a>
+          </li>
+        </ul>
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a href="{% url 'logout' %}" class="nav-link waves-effect">
+              <span class="badge red z-depth-1 mr-1">logout</span>
+              <i class="fas fa-sign-out-alt"></i>
+            </a>
+          </li>
+        </ul>
+        {% else %}
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a href="{% url 'login' %}" class="nav-link waves-effect">
+              <span class="badge blue z-depth-1 mr-1">login</span>
+              <i class="fas fa-sign-in-alt"></i>
+            </a>
+          </li>
+        </ul>
+
+        {% endif %}
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a href="{% url 'help' %}" class="nav-link waves-effect">
+              <span class="badge green z-depth-1 mr-1">Help</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar -->

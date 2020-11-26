@@ -1,0 +1,140 @@
+{% load static %}
+{% load cart_template_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>MoonLigtht | Store</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap-->
+  <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %} ">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"  rel="stylesheet" id="bootstrap-css">
+<!--promotion-->
+<script>document.getElementsByTagName("html")[0].className += " js";</script>
+<!-- load CSS -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">                                      <!-- https://getbootstrap.com/ -->
+  <link rel="stylesheet" href="{% static 'fontawesome-all.min.css' %}">                                <!-- Font awesome -->
+  <link rel="stylesheet" href="{% static 'slick/slick.css' %}">
+  <link rel="stylesheet" href="{% static 'slick/slick-theme.css' %}">
+  <link rel="stylesheet" href="{% static 'css/templatemo-style.css' %}">
+  <style type="text/css">
+    html,
+    body,
+    header,
+    .carousel {
+      height: 60vh;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header {
+        height: 100vh;
+      }
+    }
+</style>
+</head>
+
+<body>
+{% include 'catalog/navbar.html' %}
+
+  {% block content %}
+  {% endblock %}
+
+
+{% include 'catalog/footer.html'  %}
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+
+  <script  src="{% static '//js/jquery-3.4.1.min.js' %}"></script>
+  <!-- Bootstrap tooltips -->
+  <script  src="{% static '//js/popper.min.js' %}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+  <!-- MDB core JavaScript-->
+  <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+
+<!--help-->
+<script src="{% static 'js/util.js' %}"></script> <!-- util functions included in the CodyHouse framework -->
+<script src="{% static 'js/main.js' %}"></script>
+
+<!--promotion-->
+<script>
+    // detect IE8 and above, and edge
+    if (document.documentMode || /Edge/.test(navigator.userAgent)) {
+        alert('Please use Chrome or Firefox for best browsing experience!');
+    }
+  </script>
+
+  <!--promotion-->
+  <script src="js/jquery-3.2.1.slim.min.js"></script>
+<script src="slick/slick.min.js"></script>
+<script>
+
+  $(function(){
+    $('.tm-gallery').slick({
+      dots: true,
+      infinite: true,
+      slidesToShow: 4,
+      slidesToScroll: 2,
+      responsive: [
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2
+        }
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
+    ]
+    });
+  });
+
+</script>
+
+  <!-- Initializations -->
+  <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+
+  </script>
+</body>
+
+</html>

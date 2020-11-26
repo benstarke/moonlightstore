@@ -1,0 +1,62 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+
+<br>
+{% include 'catalog/slider.html' with slides=slides %}
+
+{% include 'catalog/category.html' %}
+
+<section class="text-center mb-4 container">
+  <!--Grid row-->
+  <div class="row wow fadeIn">
+    <!--Grid column-->{% for item in items %}
+    <div class="col-lg-3 col-md-6 mb-4">
+      <!--Card-->
+      <div class="card">
+        <!--Card image-->
+        <div class="view overlay">
+          <img src="{{ item.image.url }}" class="card-img-top"
+            alt="">
+          <a href="{% url 'product' item.slug %}" >
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <!--Card image-->
+        <!--Card content-->
+        <div class="card-body text-center">
+          <!--Category & Title-->
+          <a href="{% url 'product' item.slug %}" class="grey-text">
+            <h5>{{item.get_category_display}}</h5>
+          </a>
+          <h5>
+            <strong>
+              <a href="{% url 'product' item.slug %}" class="dark-grey-text">{{item.title}}
+                <span class="badge badge-pill danger-color">NEW</span>
+              </a>
+            </strong>
+          </h5>
+          <h4 class="font-weight-bold blue-text">
+            {% if item.discount_price %}
+            <del>Ksh.{{item.price}}</del>
+                <strong>Ksh.{{item.discount_price}}</strong>
+            {% else %}
+            <strong>Ksh.{{item.price}}</strong>
+            {% endif %}
+          </h4>
+        </div>
+        <!--Card content-->
+      </div>
+      <!--Card-->
+
+    </div>
+    {% endfor %}
+    <!--Grid column-->
+  </div>
+</section>
+ <!--Pagination-->
+ {% if items.paginator.num_pages > 1 %}
+ {% include 'registration/pagination_green.html' with items=items %}
+{% endif %}
+ <!--Pagination   -->
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+
+
+{% block content %}
+  <!--Messages-->
+  {% if messages %}
+  {% for message in messages %}
+  <div style="margin-top:5rem;" class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">{{ message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  </div>
+  {% endfor %}
+  {% endif %}
+<br><br><br><br><br><br>
+
+
+<!-- Material form grid -->
+<form method="POST" class="container">
+  <!-- Grid row -->{% csrf_token %}
+  <div class="row">
+    <!-- Grid column -->
+    <div class="col">
+      <!-- Material input -->
+      <div class="md-form mt-0">
+        <input type="text" name="username" class="form-control" placeholder="Enter your username" required>
+      </div>
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col">
+      <!-- Material input -->
+      <div class="md-form mt-0">
+        <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+      </div>
+    </div>
+    <!-- Grid column -->
+  </div>
+  <!-- Grid row -->
+
+  <div class="row">
+    <!-- Grid column -->
+    <div class="col">
+      <!-- Material input -->
+      <div class="md-form mt-0">
+        <input type="password" name="password1" class="form-control" placeholder="Enter your password" required>
+      </div>
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col">
+      <!-- Material input -->
+      <div class="md-form mt-0">
+        <input type="password" name="password2" class="form-control" placeholder="Confirm your password" required>
+      </div>
+    </div>
+    <!-- Grid column -->
+  </div>
+  <!-- Grid row -->
+  <button class="btn btn-primary btn-rounded btn-block my-4 w-50 waves-light z-depth-0" type="submit">Sign Up</button>
+</form>
+<!-- Material form grid -->
+ <div class="border-top pt-3 text-center">
+      <span class="text-muted"> Have an Account?
+          <a href="{% url 'login' %}"> <span class="badge badge-primary">signIn</span></a>
+      </span>
+  </div>
+{% endblock %}
