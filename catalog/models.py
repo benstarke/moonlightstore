@@ -1,6 +1,7 @@
 from django.db import models
 from django.shortcuts import reverse
 from django.contrib.auth.models import User
+from django.utils import timezone
 #from phone_field import PhoneField
 #from phonenumber_field.modelfields import PhoneNumberField
 
@@ -144,3 +145,48 @@ class delivery(models.Model):
 
 	def __str__(self):
 		return self.hostel
+
+
+
+#new models for the changes on recent products
+
+class Recent_Products(models.Model):
+	product_name = models.CharField(max_length=222)
+	image = models.ImageField(upload_to='recent_products')
+	price = models.DecimalField(max_digits=7, decimal_places=4)
+	liked = models.ManyToManyField(User, default=None, blank=True, related_name='liked')
+	
+	def num_likes(self):
+		return self.liked.all().count()
+
+
+LIKE_CHOICES = (
+    ('Like', 'Like'),
+    ('Unlike', 'Unlike')
+)
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Recent_Products, on_delete=models.CASCADE)
+    value = models.CharField(choices=LIKE_CHOICES, default='Unlike', max_length=10)
+    date_liked = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return str(self.product)
+
+
+#new models for the changes on customer reviews
+
+class Rate(models.Model):
+    listing = models.ForeignKey(Recent_Products,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    rate = models.IntegerField(null=True, blank=True)
+
+
+class Customer_Reviews(models.Model):
+	listing = models.ForeignKey(Rate,on_delete=models.CASCADE)
+	user = models.ForeignKey(User,on_delete=models.CASCADE)
+	profession = models.CharField(max_length=222)
+	message = models.TextField()
+
+
